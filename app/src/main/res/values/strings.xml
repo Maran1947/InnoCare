@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">InnoCare</string>
+    <string-array name="activity">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+    <string name="open">open</string>
+    <string name="close">close</string>
+</resources>

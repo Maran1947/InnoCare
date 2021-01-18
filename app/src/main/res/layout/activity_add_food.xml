@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2893FF"
+    android:layout_gravity="center"
+    tools:context=".AddFoodActivity"
+    android:orientation="vertical">
+
+  <LinearLayout
+      android:id="@+id/ll_type"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/tv_type"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:text="Breakfast"
+          android:textColor="#fff"
+          android:paddingTop="18dp"
+          android:textSize="28sp"/>
+
+  </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_food"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_type"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        tools:itemCount="20"
+        tools:listitem="@layout/recycler_card_layout" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/ic_add" />
+
+
+    <TextView
+        android:id="@+id/tv_emptyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Add Food! "
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:visibility="gone" />
+
+</RelativeLayout>

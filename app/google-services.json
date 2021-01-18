@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "450990086084",
+    "project_id": "innocare-42d17",
+    "storage_bucket": "innocare-42d17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450990086084:android:4a5e15d02ac731afe23691",
+        "android_client_info": {
+          "package_name": "com.example.innocare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450990086084-o8kbf0p9dausvj9smn0m4hi2k9l2iesm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrMZkNrpZdfV2aigghwxN4534YUBFKiRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450990086084-o8kbf0p9dausvj9smn0m4hi2k9l2iesm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

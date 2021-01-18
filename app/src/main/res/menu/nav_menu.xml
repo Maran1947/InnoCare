@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior = "single">
+
+        <item
+            android:id = "@+id/nav_home"
+            android:icon = "@drawable/ic_launcher_foreground"
+            android:title = "Home" />
+
+        <item
+            android:id = "@+id/nav_track_calorie"
+            android:icon = "@drawable/ic_launcher_foreground"
+            android:title = "Track Calorie" />
+
+    </group>
+
+    <item
+        android:id="@+id/log_out"
+        android:title="Log out"
+        />
+</menu>
