@@ -13,7 +13,7 @@ It uses Firebase, Kotlin Coroutines, Navigation Drawer, Recycler View and much m
 
 ### Screenshots
 
-![screenshot_register](img\5.png)
+![screenshot_register](img/5.png)
 ![screenshot_home](img\1.png)
 ![screenshot_type](img\2.png)
 ![screenshot_view](img\3.png)
