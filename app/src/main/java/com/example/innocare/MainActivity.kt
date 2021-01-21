@@ -64,6 +64,12 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
+                R.id.nav_profile -> {
+//                    Toast.makeText(this,"Dashboard",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                }
+
                 R.id.nav_track_calorie -> {
 //                    Toast.makeText(this, "Add Food", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, TrackCalorieActivity::class.java)

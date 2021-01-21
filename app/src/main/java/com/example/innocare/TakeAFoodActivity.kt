@@ -34,23 +34,23 @@ class TakeAFoodActivity : AppCompatActivity(){
 
     val db = FirebaseFirestore.getInstance()
     val foodCollections = db.collection("foods")
-    val userCollections = db.collection("users")
+    private val userCollections = db.collection("users")
     val auth = Firebase.auth
 
-    var uid:String = ""
-    var name: String = ""
-    var weight: Int = 0
-    var height: Int = 0
-    var age: Int = 0
-    var gender: String = ""
-    var activity: String = ""
-
-    var totalCalories: Int = 0
-    var dailyCalories: Int = 0
-    var weeklyCalories: Int = 0
-    var breakfastCalories: Int = 0
-    var lunchCalories: Int = 0
-    var dinnerCalories: Int = 0
+//    var uid:String = ""
+//    var name: String = ""
+//    var weight: Int = 0
+//    var height: Int = 0
+//    var age: Int = 0
+//    var gender: String = ""
+//    var activity: String = ""
+//
+//    var totalCalories: Int = 0
+//    var dailyCalories: Int = 0
+//    var weeklyCalories: Int = 0
+//    var breakfastCalories: Int = 0
+//    var lunchCalories: Int = 0
+//    var dinnerCalories: Int = 0
 
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -62,11 +62,11 @@ class TakeAFoodActivity : AppCompatActivity(){
             addFoodToDB()
         }
 
-       if(et_calories.text.toString().isNotEmpty()) {
-           getOldUsersDetails()
-
-           updateCalories(getNewUsersDetails())
-       }
+//       if(et_calories.text.toString().isNotEmpty()) {
+//           getOldUsersDetails()
+//
+//           updateCalories(getNewUsersDetails())
+//       }
 
     }
     private fun addFoodToDB() {
@@ -100,84 +100,84 @@ class TakeAFoodActivity : AppCompatActivity(){
         }
     }
 
-    private fun getOldUsersDetails() {
-        val currentUserId = auth.currentUser!!.uid
-
-        CoroutineScope(Dispatchers.IO).launch {
-            try{
-                val userDetailsDao = UsersDetailsDao()
-                val user = userDetailsDao.getUserById(currentUserId).await().toObject(UsersDetails::class.java)
-
-                withContext(Dispatchers.Main){
-
-                    uid = user!!.uid
-                    name = user.name
-                    weight = user.weight
-                    height = user.height
-                    age = user.age
-                    gender = user.gender
-                    activity = user.activity
-
-                    totalCalories = user.totalCalories
-                    dailyCalories = user.dailyCalories
-                    weeklyCalories = user.weeklyCalories
-                    breakfastCalories = user.breakfastCalories
-                    lunchCalories = user.lunchCalories
-                    dinnerCalories = user.dinnerCalories
-                }
-            } catch (e: Exception) {
-                Log.d("TAG", "takeFood: ${e.message}")
-            }
-        }
-    }
-
-    private fun getNewUsersDetails(): Map<String, Any> {
-        val map = mutableMapOf<String, Any>()
-        when(et_type.text.toString()) {
-            "Breakfast" -> {
-                map["breakfastCalories"] = breakfastCalories + et_calories.text.toString().toInt()
-            }
-
-            "lunch" -> {
-                map["lunchCalories"] = lunchCalories + et_calories.text.toString().toInt()
-
-            }
-
-            "Dinner" -> {
-                map["dinnerCalories"] = dinnerCalories + et_calories.text.toString().toInt()
-
-            }
-        }
-
-        map["totalCalories"] = totalCalories + et_calories.text.toString().toInt()
-        map["dailyCalories"] = dailyCalories + et_calories.text.toString().toInt()
-        map["weeklyCalories"] = weeklyCalories + et_calories.text.toString().toInt()
-
-        return map
-    }
-
-    private fun updateCalories(newUsersDetailsMap: Map<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
-        val usersDetailsQuery = userCollections
-                .get().await()
-
-        if(usersDetailsQuery.documents.isNotEmpty()) {
-            for(document in usersDetailsQuery) {
-                try{
-                    userCollections.document(document.id).set(
-                            newUsersDetailsMap,
-                            SetOptions.merge()
-                    )
-                } catch (e: Exception){
-                    withContext(Dispatchers.Main){
-                        Toast.makeText(this@TakeAFoodActivity, e.message, Toast.LENGTH_LONG).show()
-                    }
-                }
-            }
-        }else{
-            withContext(Dispatchers.Main){
-                Toast.makeText(this@TakeAFoodActivity, "Empty Users ", Toast.LENGTH_LONG).show()
-            }
-        }
-    }
+//    private fun getOldUsersDetails() {
+//        val currentUserId = auth.currentUser!!.uid
+//
+//        CoroutineScope(Dispatchers.IO).launch {
+//            try{
+//                val userDetailsDao = UsersDetailsDao()
+//                val user = userDetailsDao.getUserById(currentUserId).await().toObject(UsersDetails::class.java)
+//
+//                withContext(Dispatchers.Main){
+//
+//                    uid = user!!.uid
+//                    name = user.name
+//                    weight = user.weight
+//                    height = user.height
+//                    age = user.age
+//                    gender = user.gender
+//                    activity = user.activity
+//
+//                    totalCalories = user.totalCalories
+//                    dailyCalories = user.dailyCalories
+//                    weeklyCalories = user.weeklyCalories
+//                    breakfastCalories = user.breakfastCalories
+//                    lunchCalories = user.lunchCalories
+//                    dinnerCalories = user.dinnerCalories
+//                }
+//            } catch (e: Exception) {
+//                Log.d("TAG", "takeFood: ${e.message}")
+//            }
+//        }
+//    }
+//
+//    private fun getNewUsersDetails(): Map<String, Any> {
+//        val map = mutableMapOf<String, Any>()
+//        when(et_type.text.toString()) {
+//            "Breakfast" -> {
+//                map["breakfastCalories"] = breakfastCalories + et_calories.text.toString().toInt()
+//            }
+//
+//            "lunch" -> {
+//                map["lunchCalories"] = lunchCalories + et_calories.text.toString().toInt()
+//
+//            }
+//
+//            "Dinner" -> {
+//                map["dinnerCalories"] = dinnerCalories + et_calories.text.toString().toInt()
+//
+//            }
+//        }
+//
+//        map["totalCalories"] = totalCalories + et_calories.text.toString().toInt()
+//        map["dailyCalories"] = dailyCalories + et_calories.text.toString().toInt()
+//        map["weeklyCalories"] = weeklyCalories + et_calories.text.toString().toInt()
+//
+//        return map
+//    }
+//
+//    private fun updateCalories(newUsersDetailsMap: Map<String, Any>) = CoroutineScope(Dispatchers.IO).launch {
+//        val usersDetailsQuery = userCollections
+//                .get().await()
+//
+//        if(usersDetailsQuery.documents.isNotEmpty()) {
+//            for(document in usersDetailsQuery) {
+//                try{
+//                    userCollections.document(document.id).set(
+//                            newUsersDetailsMap,
+//                            SetOptions.merge()
+//                    )
+//                } catch (e: Exception){
+//                    withContext(Dispatchers.Main){
+//                        Toast.makeText(this@TakeAFoodActivity, e.message, Toast.LENGTH_LONG).show()
+//                    }
+//                }
+//            }
+//        }else{
+//            withContext(Dispatchers.Main){
+//                Toast.makeText(this@TakeAFoodActivity, "Empty Users ", Toast.LENGTH_LONG).show()
+//            }
+//        }
+//    }
 
 }

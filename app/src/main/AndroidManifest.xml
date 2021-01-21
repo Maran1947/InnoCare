@@ -9,12 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InnoCare">
-        <activity android:name=".TakeAFoodActivity"></activity>
+        <activity android:name=".ProfileActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".TakeAFoodActivity" />
         <activity android:name=".AddFoodActivity" />
         <activity android:name=".TrackCalorieActivity" />
-        <activity android:name=".CategoriesActivity" />
-        <activity android:name=".WeeklyReportActivity" />
-        <activity android:name=".DashboardActivity" />
         <activity android:name=".SigninActivity" />
         <activity android:name=".SignupActivity">
             <intent-filter>
@@ -23,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            />
     </application>
 
 </manifest>
